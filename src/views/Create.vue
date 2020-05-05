@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import Deck from '@/utils/deck'
 
 @Component
 export default class Create extends Vue {
@@ -17,11 +16,10 @@ export default class Create extends Vue {
     }
 
     this.loading = true
-    const deck = new Deck(cards, rotation)
 
     try {
-      await deck.save()
-      this.$router.push({ name: 'Deck', params: { id: deck.getId() || '' } })
+      const id = await this.$store.dispatch('createDeck', { cards, rotation })
+      this.$router.push({ name: 'Deck', params: { id } })
     } catch (error) {
       console.error(error)
       this.loading = false

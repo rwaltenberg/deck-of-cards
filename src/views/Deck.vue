@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'vue-property-decorator'
 import Deck from '@/utils/deck'
 import Desk from '@/components/Desk.vue'
 
@@ -9,7 +9,9 @@ import Desk from '@/components/Desk.vue'
   }
 })
 export default class DeckDetails extends Vue {
-  private deck: Deck | null = null
+  get deck () {
+    return this.$store.getters.deck as Deck | null
+  }
 
   get sorted () {
     return this.deck && {
@@ -22,9 +24,16 @@ export default class DeckDetails extends Vue {
     return this.deck && this.deck.getFullHouseStrings()
   }
 
-  async mounted () {
+  @Watch('$route.params.id', { immediate: true })
+  async fetch () {
+    const id = this.$route.params.id
+
+    if (this.deck && this.deck.getId() === id) {
+      return
+    }
+
     try {
-      this.deck = await Deck.fromDeckId(this.$route.params.id)
+      this.$store.dispatch('fetchDeck', id)
     } catch (error) {
       console.error(error)
     }
