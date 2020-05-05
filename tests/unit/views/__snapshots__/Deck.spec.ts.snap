@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Deck.vue renders correctly 1`] = `
+<div class="deck">
+  <desk-stub value="2,H,3,H,2,D,3,D,2,C,3,C,2,S"></desk-stub>
+  <dl class="stats">
+    <dt>High Card:</dt>
+    <dd>2H</dd>
+    <dt>Full House Combo:</dt>
+    <dd class="has-full-houses">
+      <ol class="full-houses">
+        <li>2H, 2D, 2C, 3H, 3D</li>
+        <li>2H, 2D, 2C, 3H, 3C</li>
+        <li>2H, 2D, 2S, 3H, 3D</li>
+        <li>2H, 2D, 2C, 3D, 3C</li>
+        <li>2H, 2D, 2S, 3H, 3C</li>
+        <li>2H, 2C, 2S, 3H, 3D</li>
+        <li>2H, 2D, 2S, 3D, 3C</li>
+        <li>2H, 2C, 2S, 3H, 3C</li>
+        <li>2D, 2C, 2S, 3H, 3D</li>
+        <li>2H, 2C, 2S, 3D, 3C</li>
+        <li>2D, 2C, 2S, 3H, 3C</li>
+        <li>2D, 2C, 2S, 3D, 3C</li>
+        <li>2H, 2D, 3H, 3D, 3C</li>
+        <li>2H, 2C, 3H, 3D, 3C</li>
+        <li>2H, 2S, 3H, 3D, 3C</li>
+        <li>2D, 2C, 3H, 3D, 3C</li>
+        <li>2D, 2S, 3H, 3D, 3C</li>
+        <li>2C, 2S, 3H, 3D, 3C</li>
+      </ol>
+    </dd>
+  </dl>
+</div>
+`;

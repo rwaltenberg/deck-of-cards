@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Create.vue renders correctly 1`] = `
+<form class="create">
+  <div class="cards">
+    <div class="card"><label for="card0">Card 1</label> <input id="card0" type="text" maxlength="2" placeholder="Enter card"></div>
+    <div class="card"><label for="card1">Card 2</label> <input id="card1" type="text" maxlength="2" placeholder="Enter card"></div>
+    <div class="card"><label for="card2">Card 3</label> <input id="card2" type="text" maxlength="2" placeholder="Enter card"></div>
+    <div class="card"><label for="card3">Card 4</label> <input id="card3" type="text" maxlength="2" placeholder="Enter card"></div>
+    <div class="card"><label for="card4">Card 5</label> <input id="card4" type="text" maxlength="2" placeholder="Enter card"></div>
+    <div class="card"><label for="card5">Card 6</label> <input id="card5" type="text" maxlength="2" placeholder="Enter card"></div>
+    <div class="card"><label for="card6">Card 7</label> <input id="card6" type="text" maxlength="2" placeholder="Enter card"></div>
+    <div class="card"><label for="card7">Card 8</label> <input id="card7" type="text" maxlength="2" placeholder="Enter card"></div>
+    <div class="card"><label for="card8">Card 9</label> <input id="card8" type="text" maxlength="2" placeholder="Enter card"></div>
+    <div class="card"><label for="card9">Card 10</label> <input id="card9" type="text" maxlength="2" placeholder="Enter card"></div>
+  </div>
+  <div class="rotation">
+    <div class="card"><label for="rotation">Rotation Card</label> <input id="rotation" type="text" maxlength="2" placeholder="Enter card"></div>
+  </div> <button type="submit" class="submit">Submit</button>
+</form>
+`;
