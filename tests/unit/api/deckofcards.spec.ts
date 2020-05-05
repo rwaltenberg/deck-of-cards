@@ -1,4 +1,4 @@
-import { DeckOfCards } from '@/api/deckofcards';
+import { DeckOfCards } from '@/api/deckofcards'
 import mockAxios from 'jest-mock-axios'
 
 const pause = (timeout = 0) => {
@@ -9,8 +9,8 @@ const pause = (timeout = 0) => {
 
 describe('deckofcards.ts', () => {
   afterEach(() => {
-      mockAxios.reset();
-  });
+    mockAxios.reset()
+  })
 
   it('fetches a deck from the api and returns it\'s contents', async () => {
     const id = 'as32d1a3'
@@ -28,7 +28,7 @@ describe('deckofcards.ts', () => {
         success: true,
         piles: {
           table: {
-            cards: [{ code: 'AH'}, { code: 'AS'}]
+            cards: [{ code: 'AH' }, { code: 'AS' }]
           },
           included: {}
         }

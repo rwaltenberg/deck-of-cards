@@ -1,4 +1,4 @@
-import combinations from "@/utils/combinations"
+import combinations from '@/utils/combinations'
 
 describe('combinations.ts', () => {
   const set = [3, 2, 1]

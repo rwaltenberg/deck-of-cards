@@ -1,4 +1,4 @@
-import sortCards, { rankCard, sortByRank } from "@/utils/sort-cards"
+import sortCards, { rankCard, sortByRank } from '@/utils/sort-cards'
 
 const cards: Card[] = [
   ['2', 'H'],

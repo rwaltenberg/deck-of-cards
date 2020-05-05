@@ -1,4 +1,4 @@
-import { isFullHouse } from "@/utils/is-full-house"
+import { isFullHouse } from '@/utils/is-full-house'
 
 describe('is-full-house.ts', () => {
   it('returns true if set is a full house', () => {

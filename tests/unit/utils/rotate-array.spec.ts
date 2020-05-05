@@ -1,4 +1,4 @@
-import rotateArray from "@/utils/rotate-array"
+import rotateArray from '@/utils/rotate-array'
 
 describe('rotate-array.ts', () => {
   it('rotates array properly', () => {

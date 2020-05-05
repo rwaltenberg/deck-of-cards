@@ -1,4 +1,4 @@
-import Deck from "@/utils/deck"
+import Deck from '@/utils/deck'
 
 jest.mock('@/api/deckofcards.ts', () => {
   return {

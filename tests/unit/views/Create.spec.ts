@@ -19,7 +19,7 @@ describe('Create.vue', () => {
     const localVue = createLocalVue()
     localVue.use(Vuex)
 
-    let actions!: { createDeck: jest.Mock<any, any>}
+    let actions!: { createDeck: jest.Mock }
     let store!: Store<any>
 
     beforeEach(() => {
@@ -83,5 +83,4 @@ describe('Create.vue', () => {
       expect(actions.createDeck).toHaveBeenCalledTimes(1)
     })
   })
-
 })

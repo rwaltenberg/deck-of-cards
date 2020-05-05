@@ -4,9 +4,15 @@ import rotateArrayToItem from './rotate-array-to-item'
 import { sortBy } from 'lodash'
 
 export function rankCard (card: Card, rotation: Card, weights: [number, number] = [1, 100]) {
+  const rotationSuit = Suits.find(s => s.code === rotation[1])
+
+  if (!rotationSuit) {
+    throw new Error('The suit is invalid')
+  }
+
   const order = {
     Ranks: rotateArrayToItem(Ranks, rotation[0]),
-    Suits: rotateArrayToItem(Suits, Suits.find(s => s.code === rotation[1])!)
+    Suits: rotateArrayToItem(Suits, rotationSuit)
   }
 
   return order.Ranks.findIndex(r => r === card[0]) * weights[0] + order.Suits.findIndex(s => s.code === card[1]) * weights[1]

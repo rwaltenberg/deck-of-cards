@@ -8,7 +8,7 @@ describe('Deck.vue', () => {
   const localVue = createLocalVue()
   localVue.use(Vuex)
 
-  let mockDeckId = 'axj2sdfdc'
+  const mockDeckId = 'axj2sdfdc'
   let actions!: { fetchDeck: jest.Mock<any, any>}
   let store!: Store<any>
   let getters: { deck: () => Deck | null }
@@ -41,7 +41,7 @@ describe('Deck.vue', () => {
   })
 
   it('tries to fetch deck when there is none from store', () => {
-    const emptyGetters =  {
+    const emptyGetters = {
       deck: () => null
     }
 

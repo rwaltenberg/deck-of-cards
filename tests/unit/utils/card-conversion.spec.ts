@@ -1,4 +1,4 @@
-import { StringToCard } from "@/utils/card-conversion"
+import { StringToCard } from '@/utils/card-conversion'
 
 describe('card-conversion.ts', () => {
   describe('StringToCard', () => {
