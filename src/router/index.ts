@@ -1,6 +1,6 @@
 import VueRouter, { RouteConfig } from 'vue-router'
 
-import Home from '../views/Home.vue'
+import Create from '../views/Create.vue'
 import Vue from 'vue'
 
 Vue.use(VueRouter)
@@ -8,14 +8,24 @@ Vue.use(VueRouter)
 const routes: Array<RouteConfig> = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    redirect: { name: 'Create' }
+  },
+  {
+    path: '/deck/new',
+    name: 'Create',
+    meta: {
+      title: 'CARDS'
+    },
+    component: Create
+  },
+  {
+    path: '/deck/:id',
+    name: 'Deck',
+    meta: {
+      title: 'Ordered Pile'
+    },
+    component: () => import(/* webpackChunkName: "deck" */ '../views/Deck.vue')
   }
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  // }
 ]
 
 const router = new VueRouter({

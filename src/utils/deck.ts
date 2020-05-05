@@ -5,7 +5,7 @@ import { DeckOfCards } from '@/api/deckofcards'
 import rotateArrayToItem from './rotate-array-to-item'
 import { sortBy } from 'lodash'
 
-export default class Deck {
+export class Deck {
   private deckId?: string
   private rotation!: Card
   private cards: Card[] = []
@@ -13,7 +13,7 @@ export default class Deck {
   constructor (cards: string[], rotation: string, deckId?: string) {
     this.cards = cards.map(StringToCard)
     this.rotation = StringToCard(rotation)
-    this.deckId
+    this.deckId = deckId
   }
 
   private get order () {
@@ -31,6 +31,10 @@ export default class Deck {
     const { cards, rotation } = await DeckOfCards.fetchDeck(deckId)
 
     return new Deck(cards, rotation, deckId)
+  }
+
+  public getId () {
+    return this.deckId
   }
 
   public getCards () {
@@ -53,3 +57,5 @@ export default class Deck {
     this.deckId = await DeckOfCards.saveDeck(this.cards, this.rotation)
   }
 }
+
+export default Deck
