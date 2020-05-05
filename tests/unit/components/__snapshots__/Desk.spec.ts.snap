@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Desk.vue with Desk type values renders properly 1`] = `
+<ul class="desk">
+  <deck-card-stub value="A,S" tag="li"></deck-card-stub>
+  <deck-card-stub value="A,C" tag="li"></deck-card-stub>
+  <deck-card-stub value="A,H" tag="li"></deck-card-stub>
+  <deck-card-stub value="A,D" tag="li"></deck-card-stub>
+</ul>
+`;
+
+exports[`Desk.vue with empty value renders properly 1`] = `<ul class="desk"></ul>`;
+
+exports[`Desk.vue with string type values renders properly 1`] = `
+<ul class="desk">
+  <deck-card-stub value="A,S" tag="li"></deck-card-stub>
+  <deck-card-stub value="A,C" tag="li"></deck-card-stub>
+  <deck-card-stub value="A,H" tag="li"></deck-card-stub>
+  <deck-card-stub value="A,D" tag="li"></deck-card-stub>
+</ul>
+`;

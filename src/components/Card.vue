@@ -20,7 +20,13 @@ export default class DeckCard extends Vue {
   }
 
   getSuit (code: SuitCode) {
-    return Suits.find(s => s.code === code) || Suits[0]
+    // Since code only accepts strings contained on SuitCode type, suit is
+    // definetly non-null.
+    //
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const suit = Suits.find(s => s.code === code)!
+
+    return suit
   }
 }
 </script>

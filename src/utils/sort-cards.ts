@@ -4,11 +4,11 @@ import rotateArrayToItem from './rotate-array-to-item'
 import { sortBy } from 'lodash'
 
 export function rankCard (card: Card, rotation: Card, weights: [number, number] = [1, 100]) {
-  const rotationSuit = Suits.find(s => s.code === rotation[1])
-
-  if (!rotationSuit) {
-    throw new Error('The suit is invalid')
-  }
+  // Since Card[1] only accepts strings contained on SuitCode type,
+  // rotationSuit is definetly non-null.
+  //
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const rotationSuit = Suits.find(s => s.code === rotation[1])!
 
   const order = {
     Ranks: rotateArrayToItem(Ranks, rotation[0]),

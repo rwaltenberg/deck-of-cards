@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card.vue with Card type value renders properly 1`] = `
+<div class="card">
+  <div class="value" style="color: rgb(0, 0, 0);">
+    <div class="rank">A</div>
+    <div class="suit">♠</div>
+  </div>
+  <div class="value mirror" style="color: rgb(0, 0, 0);">
+    <div class="rank">A</div>
+    <div class="suit">♠</div>
+  </div>
+</div>
+`;
+
+exports[`Card.vue with string type value renders properly 1`] = `
+<div class="card">
+  <div class="value" style="color: rgb(0, 0, 0);">
+    <div class="rank">A</div>
+    <div class="suit">♠</div>
+  </div>
+  <div class="value mirror" style="color: rgb(0, 0, 0);">
+    <div class="rank">A</div>
+    <div class="suit">♠</div>
+  </div>
+</div>
+`;
