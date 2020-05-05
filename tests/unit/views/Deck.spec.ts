@@ -23,7 +23,7 @@ describe('Deck.vue', () => {
   })
 
   it('does not try to fetch if already set on storage and route id matches', () => {
-    const wrapper = shallowMount(
+    shallowMount(
       DeckDetails,
       {
         store,
@@ -47,7 +47,7 @@ describe('Deck.vue', () => {
 
     store = new Vuex.Store({ actions, getters: emptyGetters })
 
-    const wrapper = shallowMount(
+    shallowMount(
       DeckDetails,
       {
         store,
@@ -65,7 +65,7 @@ describe('Deck.vue', () => {
   })
 
   it('tries to fetch deck when deck id differs from route\'s deck id', () => {
-    const wrapper = shallowMount(
+    shallowMount(
       DeckDetails,
       {
         store,
