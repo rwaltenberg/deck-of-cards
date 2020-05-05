@@ -19,7 +19,7 @@ export class Deck {
   private get order () {
     return {
       Ranks: rotateArrayToItem(Ranks, this.rotation[0]),
-      Suits: rotateArrayToItem(Suits, this.rotation[1])
+      Suits: rotateArrayToItem(Suits, Suits.find(s => s.code === this.rotation[1]))
     }
   }
 
@@ -42,7 +42,7 @@ export class Deck {
   }
 
   public getSortedCards () {
-    return sortBy(this.cards, card => (this.order.Suits.indexOf(card[1]) + 1) * 100 + this.order.Ranks.indexOf(card[0]))
+    return sortBy(this.cards, card => (this.order.Suits.findIndex(suit => suit && suit.code === card[1]) + 1) * 100 + this.order.Ranks.indexOf(card[0]))
   }
 
   public getSortedString () {

@@ -1,7 +1,7 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
 import { StringToCard } from '../utils/card-conversion'
-import { SuitSymbols } from '../config/deck'
+import { Suits } from '../config/deck'
 
 @Component
 export default class DeckCard extends Vue {
@@ -19,21 +19,21 @@ export default class DeckCard extends Vue {
     return StringToCard(this.value)
   }
 
-  getSymbol (suit: Suit) {
-    return SuitSymbols[suit]
+  getSuit (code: SuitCode) {
+    return Suits.find(s => s.code === code) || Suits[0]
   }
 }
 </script>
 
 <template>
   <component :is="tag" class="card">
-    <div class="value">
+    <div class="value" :style="{ color: getSuit(card[1]).color }">
       <div class="rank">{{ card[0] }}</div>
-      <div class="suit">{{ getSymbol(card[1]) }}</div>
+      <div class="suit">{{ getSuit(card[1]).symbol }}</div>
     </div>
-    <div class="value mirror">
+    <div class="value mirror" :style="{ color: getSuit(card[1]).color }">
       <div class="rank">{{ card[0] }}</div>
-      <div class="suit">{{ getSymbol(card[1]) }}</div>
+      <div class="suit">{{ getSuit(card[1]).symbol }}</div>
     </div>
   </component>
 </template>

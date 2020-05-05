@@ -6,13 +6,13 @@ export function StringToCard (str: string): Card {
   }
 
   const rank = str[0].toUpperCase() as Rank
-  const suit = str[1].toUpperCase() as Suit
+  const suit = str[1].toUpperCase() as SuitCode
 
   if (!Ranks.includes(rank)) {
     throw new Error('The given rank is invalid')
   }
 
-  if (!Suits.includes(suit)) {
+  if (!Suits.some(s => s.code === suit)) {
     throw new Error('The given suit is invalid')
   }
 
