@@ -1,8 +1,9 @@
 import { CardToString, StringToCard } from './card-conversion'
-import { Ranks, Suits } from '@/config/deck'
+import sortCards, { rankCard, sortByRank } from './sort-cards'
 
 import { DeckOfCards } from '@/api/deckofcards'
-import rotateArrayToItem from './rotate-array-to-item'
+import combinations from './combinations'
+import { isFullHouse } from './is-full-house'
 import { sortBy } from 'lodash'
 
 export class Deck {
@@ -14,13 +15,6 @@ export class Deck {
     this.cards = cards.map(StringToCard)
     this.rotation = StringToCard(rotation)
     this.deckId = deckId
-  }
-
-  private get order () {
-    return {
-      Ranks: rotateArrayToItem(Ranks, this.rotation[0]),
-      Suits: rotateArrayToItem(Suits, Suits.find(s => s.code === this.rotation[1]))
-    }
   }
 
   public get persisted () {
@@ -42,7 +36,7 @@ export class Deck {
   }
 
   public getSortedCards () {
-    return sortBy(this.cards, card => (this.order.Suits.findIndex(suit => suit && suit.code === card[1]) + 1) * 100 + this.order.Ranks.indexOf(card[0]))
+    return sortCards(this.cards, this.rotation)
   }
 
   public getSortedString () {
@@ -51,6 +45,19 @@ export class Deck {
 
   public getRotation () {
     return this.rotation.slice() as Card
+  }
+
+  public getFullHouses () {
+    return sortBy(
+      combinations(this.cards, 5)
+        .filter(isFullHouse)
+        .map(set => sortByRank(set, this.rotation)),
+      set => set.reduce((sum, card) => sum + rankCard(card, this.rotation, [100, 1]), 0)
+    )
+  }
+
+  public getFullHouseStrings () {
+    return this.getFullHouses().map(f => f.map(CardToString).join(', '))
   }
 
   public async save (): Promise<void> {
