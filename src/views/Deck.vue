@@ -18,6 +18,10 @@ export default class DeckDetails extends Vue {
     }
   }
 
+  get fullHouses () {
+    return this.deck && this.deck.getFullHouseStrings()
+  }
+
   async mounted () {
     try {
       this.deck = await Deck.fromDeckId(this.$route.params.id)
@@ -36,8 +40,11 @@ export default class DeckDetails extends Vue {
       <dt>High Card:</dt>
       <dd>{{ sorted.string[0] }}</dd>
       <dt>Full House Combo:</dt>
-      <dd>
-        <ul class="full-houses"></ul>
+      <dd :class="{ 'has-full-houses': fullHouses.length }">
+        <template v-if="!fullHouses.length">None</template>
+        <ol class="full-houses" v-else>
+          <li v-for="set in fullHouses" :key="set">{{ set }}</li>
+        </ol>
       </dd>
     </dl>
   </div>
@@ -65,6 +72,17 @@ export default class DeckDetails extends Vue {
       dd {
         float: left;
         margin-left: rem(10px);
+
+        &.has-full-houses {
+          clear: both;
+          float: none;
+          display: block;
+        }
+      }
+
+      .full-houses {
+        margin: 0;
+        list-style-type: lower-roman;
       }
     }
   }
