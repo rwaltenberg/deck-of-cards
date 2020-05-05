@@ -31,7 +31,7 @@ export default class Create extends Vue {
 </script>
 
 <template>
-  <form class="create">
+  <form class="create" @submit.prevent="save">
     <div class="cards">
       <div class="card" v-for="card in cards" :key="`card${card.index}`">
         <label :for="`card${card.index}`">Card {{ card.index + 1 }}</label>
@@ -92,6 +92,11 @@ export default class Create extends Vue {
     font-size: rem(14px);
     line-height: 1;
     padding: rem(7px) rem(10px);
+    text-transform: uppercase;
+
+    &::placeholder {
+      text-transform: none;
+    }
   }
 }
 

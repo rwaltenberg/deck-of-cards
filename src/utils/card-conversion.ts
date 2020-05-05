@@ -20,5 +20,5 @@ export function StringToCard (str: string): Card {
 }
 
 export function CardToString (card: Card): string {
-  return card.join()
+  return card.join('')
 }
