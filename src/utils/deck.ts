@@ -42,7 +42,7 @@ export class Deck {
   }
 
   public getSortedCards () {
-    return sortBy(this.cards, card => this.order.Suits.indexOf(card[1]) * 10 + this.order.Ranks.indexOf(card[0]))
+    return sortBy(this.cards, card => (this.order.Suits.indexOf(card[1]) + 1) * 100 + this.order.Ranks.indexOf(card[0]))
   }
 
   public getSortedString () {
