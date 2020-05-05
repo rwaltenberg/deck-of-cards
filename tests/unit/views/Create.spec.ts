@@ -36,8 +36,8 @@ describe('Create.vue', () => {
         }
       })
 
-      const card = wrapper.find('#card0')
-      const rotation = wrapper.find('#rotation')
+      const card = wrapper.find('#card0') as Wrapper<Create>
+      const rotation = wrapper.find('#rotation') as Wrapper<Create>
       const form = wrapper.find('form').element as HTMLFormElement
 
       form.submit()
@@ -67,8 +67,8 @@ describe('Create.vue', () => {
         }
       })
 
-      const card = wrapper.find('#card0')
-      const rotation = wrapper.find('#rotation')
+      const card = wrapper.find('#card0') as Wrapper<Create>
+      const rotation = wrapper.find('#rotation') as Wrapper<Create>
       const form = wrapper.find('form').element as HTMLFormElement
 
       setInputValue(card, 'AS')
