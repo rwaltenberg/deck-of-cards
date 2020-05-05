@@ -1,5 +1,5 @@
 import { CardToString, StringToCard } from './card-conversion'
-import deck, { Ranks, Suits } from '@/config/deck'
+import { Ranks, Suits } from '@/config/deck'
 
 import { DeckOfCards } from '@/api/deckofcards'
 import rotateArrayToItem from './rotate-array-to-item'

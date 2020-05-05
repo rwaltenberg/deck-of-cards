@@ -1,25 +1,24 @@
-import { CardToString, StringToCard } from '@/utils/card-conversion'
-
 import Axios from 'axios'
+import { CardToString } from '@/utils/card-conversion'
 
 interface NewDeckResponse {
-  success: boolean
-  deck_id: string
+  success: boolean;
+  deck_id: string;
 }
 
 interface ListPileData {
-  success: boolean,
-  piles: { [name: string]: PileData }
+  success: boolean;
+  piles: { [name: string]: PileData };
 }
 
 interface PileData {
-  cards: { code: string }[]
-  remaining: number
+  cards: { code: string }[];
+  remaining: number;
 }
 
 export interface DeckData {
-  cards: string[]
-  rotation: string
+  cards: string[];
+  rotation: string;
 }
 
 export class DeckOfCards {
@@ -62,7 +61,7 @@ export class DeckOfCards {
     const cards = data.piles.table.cards.map(m => m.code)
 
     return {
-      rotation: cards.pop()!,
+      rotation: cards.pop() || '',
       cards
     }
   }

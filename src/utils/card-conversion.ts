@@ -5,8 +5,8 @@ export function StringToCard (str: string): Card {
     throw new Error('String must have two characters')
   }
 
-  const rank = str[0].toUpperCase()
-  const suit = str[1].toUpperCase()
+  const rank = str[0].toUpperCase() as Rank
+  const suit = str[1].toUpperCase() as Suit
 
   if (!Ranks.includes(rank)) {
     throw new Error('The given rank is invalid')
@@ -16,7 +16,7 @@ export function StringToCard (str: string): Card {
     throw new Error('The given suit is invalid')
   }
 
-  return [rank as Rank, suit as Suit]
+  return [rank, suit]
 }
 
 export function CardToString (card: Card): string {
