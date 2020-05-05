@@ -1,16 +1,19 @@
 import { CardToString, StringToCard } from './card-conversion'
-import { Ranks, Suits } from '@/config/deck'
+import deck, { Ranks, Suits } from '@/config/deck'
 
+import { DeckOfCards } from '@/api/deckofcards'
 import rotateArrayToItem from './rotate-array-to-item'
 import { sortBy } from 'lodash'
 
 export default class Deck {
+  private deckId?: string
   private rotation!: Card
   private cards: Card[] = []
 
-  constructor (cards: string[], rotation: string) {
+  constructor (cards: string[], rotation: string, deckId?: string) {
     this.cards = cards.map(StringToCard)
     this.rotation = StringToCard(rotation)
+    this.deckId
   }
 
   private get order () {
@@ -18,6 +21,16 @@ export default class Deck {
       Ranks: rotateArrayToItem(Ranks, this.rotation[0]),
       Suits: rotateArrayToItem(Suits, this.rotation[1])
     }
+  }
+
+  public get persisted () {
+    return Boolean(this.deckId)
+  }
+
+  public static async fromDeckId (deckId: string): Promise<Deck> {
+    const { cards, rotation } = await DeckOfCards.fetchDeck(deckId)
+
+    return new Deck(cards, rotation, deckId)
   }
 
   public getCards () {
@@ -34,5 +47,9 @@ export default class Deck {
 
   public getRotation () {
     return this.rotation.slice() as Card
+  }
+
+  public async save (): Promise<void> {
+    this.deckId = await DeckOfCards.saveDeck(this.cards, this.rotation)
   }
 }

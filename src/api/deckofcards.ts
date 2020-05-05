@@ -18,15 +18,15 @@ interface PileData {
 }
 
 export interface DeckData {
-  cards: Card[]
-  rotation: Card
+  cards: string[]
+  rotation: string
 }
 
 export class DeckOfCards {
   private static readonly ENDPOINT: string = process.env.VUE_APP_API_ENDPOINT
   private static readonly http = Axios.create({ baseURL: DeckOfCards.ENDPOINT })
 
-  public static async saveDeck (cards: Card[], rotation: Card): Promise<string> {
+  public static async saveDeck (cards: readonly Card[], rotation: Card): Promise<string> {
     const cardStrings = [...cards.map(CardToString), CardToString(rotation)]
 
     const { data: createData } = await this.http.get<NewDeckResponse>(`deck/new?cards=${cardStrings.join(',')}`)
@@ -59,7 +59,7 @@ export class DeckOfCards {
       throw new Error('Pile fetching failed')
     }
 
-    const cards = data.piles.table.cards.map(m => StringToCard(m.code))
+    const cards = data.piles.table.cards.map(m => m.code)
 
     return {
       rotation: cards.pop()!,
