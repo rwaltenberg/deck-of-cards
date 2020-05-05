@@ -1,4 +1,6 @@
-# cards
+# Intricately Front-End Challenge
+
+A solution to the challenge by Rodrigo Waltenberg
 
 ## Project setup
 ```
