@@ -1,6 +1,6 @@
-# Intricately Front-End Challenge
+# Deck of cards
 
-A solution to the challenge by Rodrigo Waltenberg
+A simple Vue 2 app with routing and state management
 
 ## Project setup
 ```
